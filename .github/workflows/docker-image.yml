@@ -9,10 +9,14 @@ on:
 jobs:
 
   build:
-
+    
+    environment: test
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker pull nvidia/cuda:12.4.0-devel-ubuntu22.04 && docker login --username="${DOCKER_USER}" registry.cn-zhangjiakou.aliyuncs.com  -p="${DOCKER_PASSWORD}" && docker tag nvidia/cuda:12.4.0-devel-ubuntu22.04 registry.cn-zhangjiakou.aliyuncs.com/top-sequence/nvidia_cuda:12.4.0-devel-ubuntu22.04 && docker push registry.cn-zhangjiakou.aliyuncs.com/top-sequence/nvidia_cuda:12.4.0-devel-ubuntu22.04
+      run: docker pull nvidia/cuda:12.4.0-devel-ubuntu22.04 \
+        & docker login --username="${DOCKER_USER}" registry.cn-zhangjiakou.aliyuncs.com  -p="${DOCKER_PASSWORD}" \
+        & docker tag nvidia/cuda:12.4.0-devel-ubuntu22.04 registry.cn-zhangjiakou.aliyuncs.com/top-sequence/nvidia_cuda:12.4.0-devel-ubuntu22.04 \
+        & docker push registry.cn-zhangjiakou.aliyuncs.com/top-sequence/nvidia_cuda:12.4.0-devel-ubuntu22.04
