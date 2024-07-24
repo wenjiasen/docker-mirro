@@ -23,6 +23,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
       run: |
-        docker pull nvidia/cuda:12.4.0-runtime-ubuntu22.04
-        docker tag nvidia/cuda:12.4.0-runtime-ubuntu22.04 registry.cn-zhangjiakou.aliyuncs.com/top-sequence/nvidia_cuda:12.4.0-runtime-ubuntu22.04
-        docker push registry.cn-zhangjiakou.aliyuncs.com/top-sequence/nvidia_cuda:12.4.0-runtime-ubuntu22.04
+        docker pull pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel
+        docker tag nvidia/cuda:12.4.0-runtime-ubuntu22.04 registry.cn-zhangjiakou.aliyuncs.com/top-sequence/pytorch:2.3.1-cuda12.1-cudnn8-devel
+        docker push registry.cn-zhangjiakou.aliyuncs.com/top-sequence/pytorch:2.3.1-cuda12.1-cudnn8-devel
