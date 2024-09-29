@@ -23,6 +23,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
       run: |
-        docker pull node:18-alpine
-        docker tag node:18 registry.cn-zhangjiakou.aliyuncs.com/top-sequence/node:18-alpine
-        docker push registry.cn-zhangjiakou.aliyuncs.com/top-sequence/node:18-alpine
+        docker pull node:18-bullseye
+        docker tag node:18 registry.cn-zhangjiakou.aliyuncs.com/top-sequence/node:18-bullseye
+        docker push registry.cn-zhangjiakou.aliyuncs.com/top-sequence/node:18-bullseye
