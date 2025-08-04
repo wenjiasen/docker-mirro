@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    
+    environment: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Login to GitLab
+      uses: docker/login-action@v3
+      with:
+        registry: yuanju.tencentcloudcr.com
+        username: ${{ secrets.TXY_DOCKER_USER }}
+        password: ${{ secrets.TXY_DOCKER_PASSWORD }}
+    - name: Build the Docker image
+      run: |
+        docker pull bosonai/higgs-audio-vllm:v0.8.3-250730
+        docker tag bosonai/higgs-audio-vllm:v0.8.3-250730 yuanju.tencentcloudcr.com/ai/higgs-audio-vllm:v0.8.3-250730
+        docker push yuanju.tencentcloudcr.com/ai/higgs-audio-vllm:v0.8.3-250730
